@@ -33,7 +33,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env,
-      BASE_URL:"'http://test.qianqiandog.com/app/services'"   //线上地址
+      BASE_URL:"'https://api0531.xgqq.com/app/services'"   //线上地址
     }),
     new UglifyJsPlugin({
       uglifyOptions: {
