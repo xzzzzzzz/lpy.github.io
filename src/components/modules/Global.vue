@@ -1,6 +1,6 @@
 <script>
 
-  const serverPath="https://apixsxzz.xgqq.com";
+  const serverPath="https://api0531.xgqq.com";
 
   export default{
       serverPath

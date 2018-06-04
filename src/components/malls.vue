@@ -305,19 +305,19 @@ export default {
             
     }
     .info_me_me .info_me_item_inner{
-        background: url(../static/img/malls/me.png) no-repeat center 1rem;
+        background: url(../public/img/malls/me.png) no-repeat center 1rem;
         background-size: 2.4rem 2.4rem;
     }
     .info_me_2x .info_me_item_inner{
-        background: url(../static/img/malls/2x.png) no-repeat center 1rem;
+        background: url(../public/img/malls/2x.png) no-repeat center 1rem;
         background-size: 2.4rem 2.4rem;
     }
     .info_me_wif .info_me_item_inner{
-        background: url(../static/img/malls/wif.png) no-repeat center 1rem;
+        background: url(../public/img/malls/wif.png) no-repeat center 1rem;
         background-size: 2.4rem 2.4rem;
     }
     .info_me_fenmi .info_me_item_inner{
-        background: url(../static/img/malls/fenmi.png) no-repeat center 1rem;
+        background: url(../public/img/malls/fenmi.png) no-repeat center 1rem;
         background-size: 2.4rem 2.4rem;
     }
     .info_name{

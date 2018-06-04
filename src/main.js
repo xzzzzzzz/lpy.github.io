@@ -9,7 +9,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import IView from 'iview';
 import 'iview/dist/styles/iview.css';
-import './static/css/css.css'
+import './public/css/css.css'
 import store from './store'
 import Tokens from './router/tokens' // 用户id
 

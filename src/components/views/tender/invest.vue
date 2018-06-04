@@ -1092,7 +1092,7 @@
           height:1.4666666666666666rem;
           top:-1.6333333333333334rem;
           color:#fff;
-          background: url(../../../static/img/invest/extra_bg.png) no-repeat;
+          background: url(../../../public/img/invest/extra_bg.png) no-repeat;
           background-size: 100% 100%;
           left:-0.5rem;
         }
@@ -1101,7 +1101,7 @@
         display: inline-block;
         width:0.8666666666666667rem;
         height:0.8666666666666667rem;
-        background: url(../../../static/img/invest/notice_white_icon.png) no-repeat;
+        background: url(../../../public/img/invest/notice_white_icon.png) no-repeat;
         background-size: 100% 100%;
         margin:0 0 0 0.3rem;
         position:absolute;
@@ -1117,7 +1117,7 @@
           line-height:1.3rem;
           font-size: 0.6rem;
           text-align: left;
-          background: url(../../../static/img/invest/notice_white_bg.png) no-repeat;
+          background: url(../../../public/img/invest/notice_white_bg.png) no-repeat;
           background-size: 100% 100%;
           left:-0.75rem;
           padding:0 0 0 0.6rem ;

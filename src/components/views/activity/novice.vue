@@ -3,17 +3,17 @@
     <nav-title title="新手入门" v-if="detailShow" :showPrev='showPrev' :prev="prev"></nav-title>
     <div class="banner-wrap">
       <div class="banner">
-        <img src="~@/static/img/novice/1.png">
+        <img src="~@/public/img/novice/1.png">
       </div>
     </div> 
     <div class="banner-wrap">
       <div class="banner">
-        <img src="~@/static/img/novice/2.png">
+        <img src="~@/public/img/novice/2.png">
       </div>
     </div> 
     <div class="banner-wrap">
       <div class="banner">
-        <img src="~@/static/img/novice/3.png">
+        <img src="~@/public/img/novice/3.png">
         <div class="btn-wrap">
           <a href="javascript:;" class="ui-button" style="margin-bottom:1rem;">立即投资</a>
           <a href="#find/guidance" style="color:#1e93ff">一分钟了解小狗钱钱>>></a>

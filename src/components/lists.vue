@@ -443,7 +443,7 @@ export default {
         & .sold_out{
             width: 100%;
             height: 2.1rem;
-            background: url(../static/img/lists/soldout.png) no-repeat left center;
+            background: url(../public/img/lists/soldout.png) no-repeat left center;
             background-size:100%;
             margin-top: -0.4666666666666667rem;
         }
@@ -453,7 +453,7 @@ export default {
                 width: 3.2666666666666666rem;
                 border: none;
                 color: #444f4f;
-                background: url(../static/img/lists/lootall.png) no-repeat right center;
+                background: url(../public/img/lists/lootall.png) no-repeat right center;
                 background-size: 3.2666666666666666rem 1.3333333333333333rem;
                 font-size: 0.8666666666666667rem;
             }
@@ -484,31 +484,31 @@ export default {
     margin-bottom:1rem;
     text-align: left;
     &.newinvest{
-      background: #fff url(../static/img/home/newinvest.png) no-repeat right top;
+      background: #fff url(../public/img/home/newinvest.png) no-repeat right top;
       background-size: 3.33333333rem 3.33333333rem;
     }
     & .titnew{
       padding-left: 2.5rem;
-      background: url(../static/img/home/novic.png) no-repeat left center;
+      background: url(../public/img/home/novic.png) no-repeat left center;
       background-size: 2.2333333333333334rem 0.8666666666666667rem;
       font-size: 0.8666666666666667rem;
     }
     & .tits{
       padding-left: 1.3rem;
-      background: url(../static/img/home/img_shang.png) no-repeat left center;
+      background: url(../public/img/home/img_shang.png) no-repeat left center;
       background-size: 0.8666666666666667rem 0.8666666666666667rem;
       font-size: 0.8666666666666667rem;
     }
     & .tit{
       padding-left: 1.3rem;
-      background: url(../static/img/home/investitbg.png) no-repeat left center;
+      background: url(../public/img/home/investitbg.png) no-repeat left center;
       background-size: 0.8666666666666667rem 0.8666666666666667rem;
       font-size: 0.8666666666666667rem;
     }
     & .titsaving {
         color: #444f4f;
         padding-left:2.5rem;
-        background: url(../static/img/lists/img_saving.png) no-repeat left center;
+        background: url(../public/img/lists/img_saving.png) no-repeat left center;
         background-size:  2.2333333333333334rem 0.8666666666666667rem;
         font-size: 0.8666666666666667rem;
     }
@@ -517,28 +517,28 @@ export default {
     & .tits_no {
         color: #444f4f;
         padding-left: 1.3rem;
-        background: url(../static/img/lists/img_shang_no.png) no-repeat left center;
+        background: url(../public/img/lists/img_shang_no.png) no-repeat left center;
         background-size: 0.8666666666666667rem 0.8666666666666667rem;
         font-size: 0.8666666666666667rem;
     }
     & .tit_no {
         color: #444f4f;
         padding-left: 1.3rem;
-        background: url(../static/img/lists/investitbg_no.png) no-repeat left center;
+        background: url(../public/img/lists/investitbg_no.png) no-repeat left center;
         background-size: 0.8666666666666667rem 0.8666666666666667rem;
         font-size: 0.8666666666666667rem;
     }
     & .titnew_no {
         color: #444f4f;
         padding-left: 2.5rem;
-        background: url(../static/img/lists/novice_no.png) no-repeat left center;
+        background: url(../public/img/lists/novice_no.png) no-repeat left center;
         background-size: 2.2333333333333334rem 0.8666666666666667rem;
         font-size: 0.8666666666666667rem;
     }
     & .titsaving_no {
         color: #444f4f;
         padding-left: 2.5rem;
-        background: url(../static/img/lists/titsaving_no.png) no-repeat left center;
+        background: url(../public/img/lists/titsaving_no.png) no-repeat left center;
         background-size:  2.2333333333333334rem 0.8666666666666667rem;
         font-size: 0.8666666666666667rem;
     }
@@ -617,12 +617,12 @@ export default {
       }
       
       /* 气泡 */
-      & .bubble{display: inline-block;width:0.8666666666666667rem;height:0.8666666666666667rem;background: url(../static/img/home/notice_blue_icon.png) no-repeat;background-size: 100% 100%;margin:0;position: relative;}
-      & .bubble i{position: absolute;width:6.533333333333333rem;height:4.2rem;top:-4.2rem;color:#9ea2a5;line-height:1.3rem;font-size: 0.6rem;text-align: left;background: url(../static/img/home/notice_white_bg.png) no-repeat;background-size: 100% 100%;left:-0.75rem;padding:0 0 0 0.5rem ;box-sizing: border-box;z-index: 7;}
+      & .bubble{display: inline-block;width:0.8666666666666667rem;height:0.8666666666666667rem;background: url(../public/img/home/notice_blue_icon.png) no-repeat;background-size: 100% 100%;margin:0;position: relative;}
+      & .bubble i{position: absolute;width:6.533333333333333rem;height:4.2rem;top:-4.2rem;color:#9ea2a5;line-height:1.3rem;font-size: 0.6rem;text-align: left;background: url(../public/img/home/notice_white_bg.png) no-repeat;background-size: 100% 100%;left:-0.75rem;padding:0 0 0 0.5rem ;box-sizing: border-box;z-index: 7;}
 
       /* 额外加息气泡 */
       & .extra{position:relative;}
-      & .extra i{position: absolute;width:3.4rem;height:1.4666666666666666rem;top:-1.4333333333333334rem;color:#fff;font-size: 0.6rem;text-align: center;line-height: 1.2666666666666666rem;background: url(../static/img/home/extra_bg.png) no-repeat;background-size: 100% 100%;left:0rem;}
+      & .extra i{position: absolute;width:3.4rem;height:1.4666666666666666rem;top:-1.4333333333333334rem;color:#fff;font-size: 0.6rem;text-align: center;line-height: 1.2666666666666666rem;background: url(../public/img/home/extra_bg.png) no-repeat;background-size: 100% 100%;left:0rem;}
 
     }
     .invest-bottom {
