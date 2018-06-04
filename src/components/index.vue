@@ -66,7 +66,7 @@
       </div>
       <div class="invesList">
           <!-- 新手标 -->
-          <div class="xsb">
+          <div class="xsb" v-if="noviceBid!=' '">
             <div class="invest newinvest" :data-title="noviceBid.title" :data-id="noviceBid.id" @click="goInvest(noviceBid.id)">
               <div class="invest-top fix" @click.stop>
                   <div class="fl titnew">
@@ -101,7 +101,7 @@
             </div>
           </div>
           <!-- 商票 -->
-          <div class="sp">
+          <div class="sp" v-if="businessTenderList!=' '">
             <div class="invest" :data-title="businessTenderList.title" :data-id="businessTenderList.id" @click="goInvest(businessTenderList.id)">
               <div class="invest-top fix">
                   <div class="fl tits">
@@ -152,7 +152,7 @@
             </div>
           </div>
           <!-- 钱钱赚 -->
-          <div class="sp">
+          <div class="sp" v-if="qqTenderList != ' '">
             <div class="invest" :data-id="qqTenderList.id" @click="goInvest(qqTenderList.id)" >
               <div class="invest-top fix" @click.stop>
                   <div class="fl tits">
@@ -245,12 +245,31 @@ export default {
           method: 'post',
           data: { OPT: '410', signUUID: ''}
         }).then((response) => {
+          if(response.data.bids[5] != null){
             this.noviceBid=response.data.bids[5]
-            this.businessTenderList=response.data.bids[2]
+          }else{
+            this.noviceBid = " "
+          }
+          if(response.data.bids[11] != null){
+            this.businessTenderList=response.data.bids[11]
+          }else{
+            this.businessTenderList = " "
+          }
+          if(response.data.bids[7] != null){
             this.qqTenderList=response.data.bids[7]
-            this.noviceBid.tags =  this.noviceBid.tags.split(',')
-            this.businessTenderList.tags =  this.businessTenderList.tags.split(',')
-            this.qqTenderList.tags =  this.qqTenderList.tags.split(',')
+          }else{
+            this.qqTenderList = " "
+          } 
+            if(this.noviceBid != " "){
+              this.noviceBid.tags =  this.noviceBid.tags.split(',')
+            }
+            if(this.businessTenderList != " "){
+              this.businessTenderList.tags =  this.businessTenderList.tags.split(',')
+            }
+            if(this.qqTenderList != " "){
+              this.qqTenderList.tags =  this.qqTenderList.tags.split(',')
+            }
+            console.log(this.noviceBid)
         }).catch((error) => {
             console.log(error)
         })
