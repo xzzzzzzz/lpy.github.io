@@ -269,7 +269,6 @@ export default {
             if(this.qqTenderList != " "){
               this.qqTenderList.tags =  this.qqTenderList.tags.split(',')
             }
-            console.log(this.noviceBid)
         }).catch((error) => {
             console.log(error)
         })
