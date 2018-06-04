@@ -1,0 +1,51 @@
+
+body{
+  padding-bottom: 4rem;
+  box-sizing: border-box;
+  background:#f3f8fc;
+}
+.fix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.fl{float: left;}
+.fr{float: right;}
+
+li{list-style: none;}
+input::-webkit-input-placeholder {color:#8f8f94;opacity:1;}
+input:-moz-placeholder{color:#8f8f94;opacity:1;}
+input::-moz-placeholder{color:#8f8f94;opacity:1;}
+input:-ms-input-placeholder {color:#8f8f94;opacity:1;}
+
+/*背景渐变*/
+.gradient{
+	background: -webkit-linear-gradient(left, #24e9f0 , #2564ef)!important; /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #24e9f0 , #2564ef)!important;/* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #24e9f0 , #2564ef)!important; /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #24e9f0 , #2564ef)!important; /* 标准的语法 */
+	color:#fff!important;
+}
+
+
+/*ios按钮去掉原生样式*/
+input[type=button], input[type=submit], input[type=file], button { cursor: pointer; -webkit-appearance: none; } 
+
+/* 渐变按钮 */
+.ui-button {
+    color: #fff;
+    cursor: pointer;
+    height: 2.933333333333333rem;
+    line-height: 2.933333333333333rem;
+    border-radius: 3rem;
+    font-size: 1.0666666666666667rem;
+    text-align: center;
+    background: -webkit-linear-gradient(left, #24e9f0 , #2564ef);
+    background: -o-linear-gradient(right, #24e9f0 , #2564ef);
+    background: -moz-linear-gradient(right, #24e9f0 , #2564ef);
+    background: linear-gradient(to right, #24e9f0 , #2564ef);
+    border: 0;
+    display: block;
+}
