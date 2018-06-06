@@ -774,9 +774,11 @@
               // } else if (lockPeriod == 365) {
               //   this.mouth = 12
               // }
-              
-              document.getElementById('mouth').value = this.mouth 
-              document.getElementById('mouthText').innerHTML = this.mouth+'个月'
+              if(this.investData.productId == 10){
+                 document.getElementById('mouth').value = this.mouth 
+                document.getElementById('mouthText').innerHTML = this.mouth+'个月'
+              }
+             
             })
         }).catch((error) => {
             console.log(error)
