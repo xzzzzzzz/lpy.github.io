@@ -350,14 +350,12 @@ export default {
         background:#fff;
         line-height: 2.666666666665rem;
         box-sizing: border-box;
-        a{
-          color: rgb(79, 80, 80);
-          .demo-carousel{
-            text-align: left;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
+        color: rgb(79, 80, 80);
+        & .demo-carousel{
+          text-align: left;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
       }
     }
