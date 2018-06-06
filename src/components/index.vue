@@ -66,7 +66,7 @@
       </div>
       <div class="invesList">
           <!-- 新手标 -->
-          <div class="xsb">
+          <div class="xsb" v-if="noviceBid != ' '">
             <div class="invest newinvest" :data-title="noviceBid.title" :data-id="noviceBid.id" @click="goInvest(noviceBid.id)">
               <div class="invest-top fix" @click.stop>
                   <div class="fl titnew">
@@ -101,7 +101,7 @@
             </div>
           </div>
           <!-- 商票 -->
-          <div class="sp">
+          <div class="sp" v-if="businessTenderList != ' '">
             <div class="invest" :data-title="businessTenderList.title" :data-id="businessTenderList.id" @click="goInvest(businessTenderList.id)">
               <div class="invest-top fix">
                   <div class="fl tits">
@@ -152,7 +152,7 @@
             </div>
           </div>
           <!-- 钱钱赚 -->
-          <div class="sp">
+          <div class="sp" v-if="qqTenderList != ' '">
             <div class="invest" :data-id="qqTenderList.id" @click="goInvest(qqTenderList.id)" >
               <div class="invest-top fix" @click.stop>
                   <div class="fl tits">
