@@ -158,6 +158,30 @@
           </li>
         </ul>
       </div>
+      <div class="schedule_content" v-if="investData.productId == 10">
+        <ul class="fix">
+          <li>
+            锁定期 / 不可转让债权
+            <p class="pa active">
+              今日投资<br>
+              {{investData.toDay}}<br>
+            </p>
+          </li>
+          <li>
+            <p class="pa">
+              {{investData.lockPeriod}}天<br>
+              {{investData.endDay}}<br>
+            </p>
+          </li>
+          <li>
+            转让期 / 免手续费
+            <p class="pa">
+              {{investData.lockPeriod+1}}天<br>
+              免费退出<br>
+            </p>
+          </li>
+        </ul>
+      </div>
       <div class="privilegeList" v-if='singUUID == " "'>
         <ul>
           <li>
@@ -297,7 +321,7 @@
           </li>
         </ul>
       </div>
-      <div class="invest_textProfit" v-if="volumes.needMaxInvestAmount > 0 && investData.productId == 2">
+      <div class="invest_textProfit" v-if="volumes.needMaxInvestAmount > 0 && (investData.productId == 2 || investData.productId == 11)">
         	再投<span class="text_red in_vote">{{volumes.needMaxInvestAmount}}</span>元，额外享受最大收益率!
       </div>
       <div class="investContent">
@@ -330,11 +354,80 @@
             </div>
           </div>
           <div class="number">
-            <InputNumber :max="investData.amount-investData.hasInvestedAmount" :min="investData.minInvestAmount" :step="investData.minInvestAmount" v-model="amount" :formatter="value => `${value}元`" :parser="value => value.replace('元', '')" v-if="investData.loanSchedule<100" @on-change="changAmount"></InputNumber>
-            <InputNumber :max="0" :min="0"  v-model="amount" :formatter="value => `${value}元`" :parser="value => value.replace('元', '')" disabled='disabled' v-else></InputNumber>
+            <InputNumber :max="investData.amount-investData.hasInvestedAmount" :min="investData.minInvestAmount" :step="investData.minInvestAmount" v-model="amount" :formatter="value => `${value|numberFormats}元`" :parser="value => value.replace('元', '')" v-if="investData.loanSchedule<100" @on-change="changAmount"></InputNumber>
+            <InputNumber :max="0" :min="0"  v-model="amount" :formatter="value => `${value|numberFormats}元`" :parser="value => value.replace('元', '')" disabled='disabled' v-else></InputNumber>
           </div>
-          <div class="saving_profit" v-if="investData.productId == 10">
-            预期收益：<span class="red">{{savingsProfit}}</span>元
+          <div class="" v-if="investData.productId == 10">
+            <div class="cytime">
+									<p class="saving_profit">持有时间：</p>
+									<div class="relate">
+										<swiper class="swiper-container" :options="swiperOption" ref="mySwiper" @change="onTouchEnd">
+                        <swiper-slide class="swiper-slide">
+                          <p>0个月</p>
+                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                        </swiper-slide>
+                        <swiper-slide class="swiper-slide">
+                          <p>1个月</p>
+                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                        </swiper-slide>
+                        <swiper-slide class="swiper-slide">
+                          <p>2个月</p>
+                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                        </swiper-slide>
+                        <swiper-slide class="swiper-slide">
+                          <p>3个月</p>
+                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                        </swiper-slide>
+                        <swiper-slide class="swiper-slide">
+                          <p>4个月</p>
+                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                        </swiper-slide>
+                        <swiper-slide class="swiper-slide">
+                          <p>5个月</p>
+                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                        </swiper-slide>
+                        <swiper-slide class="swiper-slide swiper-slide-prev">
+                          <p>6个月</p>
+                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                        </swiper-slide>
+                        <swiper-slide class="swiper-slide swiper-slide-active">
+                          <p>7个月</p>
+                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                        </swiper-slide>
+                        <swiper-slide class="swiper-slide swiper-slide-next">
+                          <p>8个月</p>
+                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                        </swiper-slide>
+                        <swiper-slide class="swiper-slide">
+                          <p>9个月</p>
+                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                        </swiper-slide>
+                        <swiper-slide class="swiper-slide">
+                          <p>10个月</p>
+                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                        </swiper-slide>
+                        <swiper-slide class="swiper-slide">
+                          <p>11个月</p>
+                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                        </swiper-slide>
+                        <swiper-slide class="swiper-slide">
+                          <p>12个月</p>
+                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                        </swiper-slide>
+                  </swiper>
+                  <div class="rule_b">
+                    <input type="hidden" id="mouth">
+                    <input type="hidden" id="investMoney" v-model="amount">
+                    <input type="hidden" id="interestVolumes" v-model="interestValue">
+                    <input type="hidden" id="vipPlusRate" v-model="investData.vipPlusRate">
+                    <input type="hidden" id="investaprs" v-model="investData.billBasicApr">
+                    <input type="hidden" id="addaprs" v-model="investData.addapr">
+                    <p id="mouthText"></p>
+                  </div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+									<p class="saving_profit">预期收益：<span class="red" id="savingsProfit"></span>元</p>
+									</div>
+								</div>
           </div>
           <div v-if="investData.loanSchedule < 100 && singUUID != ' '">
             <div v-if="investData.productId == 2 || investData.productId == 10 || investData.productId == 11">
@@ -474,6 +567,7 @@
 
 <script>
   import navTitle from '../../modules/title.vue'
+  import { swiper, swiperSlide } from 'vue-awesome-swiper'
   export default {
     data () {
       return {
@@ -540,6 +634,91 @@
         recommendProduct:"", // 投资产品
         productPeriod:"", // 投资期限
         cpnum:"", // 测评左侧按钮文字
+        swiperOption: {
+          // NotNextTick is a component's own property, and if notNextTick is set to true, the component will not instantiate the swiper through NextTick, which means you can get the swiper object the first time (if you need to use the get swiper object to do what Things, then this property must be true)
+          // notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
+          notNextTick: true,
+          // swiper configs 所有的配置同swiper官方api配置
+          autoplay: false,
+          direction : 'horizontal',
+					loop: false,
+					speed: 1000,
+					autoplay: false,
+					freeMode: false,
+					slidesPerView: 6,
+					touchRatio: 0.5,
+					initialSlide:1,
+					followFinger: false,
+					centeredSlides: true,
+          grabCursor : true,
+          setWrapperSize :true,
+          autoHeight: true,
+          paginationClickable :true,
+          mousewheelControl : true,
+          observeParents:true,
+          // if you need use plugins in the swiper, you can config in here like this
+          // 如果自行设计了插件，那么插件的一些配置相关参数，也应该出现在这个对象中，如下debugger
+          debugger: true,
+          // swiper callbacks
+          // swiper的各种回调函数也可以出现在这个对象中，和swiper官方一样
+           on: {
+						slideChangeTransitionEnd: function(){
+              document.getElementById('mouth').value = this.activeIndex
+              document.getElementById('mouthText').innerHTML = this.activeIndex+'个月'
+              calcDelta4(this.activeIndex)
+              function calcDelta4(mouth) {
+                var investMoney = Number(document.getElementById('investMoney').value); //本金
+                var interestVolumes = Number(document.getElementById('interestVolumes').value); //加息卷利息
+                var vipPlusRate = Number(document.getElementById('vipPlusRate').value); //特权加息
+                var investaprs = Number(document.getElementById('investaprs').value);//基础年化
+                var addaprs = Number(document.getElementById('addaprs').value);//基础年化
+                var mouth =Number(mouth); //月份
+                var day = mouth * 30
+                if(isNaN(interestVolumes)){
+                  interestVolumes = 0
+                }
+                if(isNaN(vipPlusRate)){
+                  vipPlusRate = 0
+                }
+                if (interestVolumes > 0) {
+                    //有加息券计算
+                    var pow = Math.pow((1 + ((investaprs / 100 + vipPlusRate / 100 + addaprs / 100 + interestVolumes / 100) / 365)), mouth * 30)
+                    var pow2 = Math.pow((1 + ((investaprs / 100 + vipPlusRate / 100 + addaprs / 100 + interestVolumes / 100) / 365)), 365)
+                    console.log('使用加息券:=====', pow)
+                    // pow = Math.pow((1 + ( (info.getApr()/100 + info.getVipPlusRate()/100  + interestVolumes.value/100 ) / 365)),scaleBar.getmPosition()* 30);
+                  } else {
+                    //无加息券计算
+                    var pow = Math.pow((1 + ((investaprs / 100 + vipPlusRate / 100 + addaprs / 100) / 365)), mouth * 30)
+
+                    var pow2 = Math.pow((1 + ((investaprs / 100 + vipPlusRate / 100 + addaprs / 100) / 365)), 365)
+
+                    console.log('未使用加息券:=====', pow)
+                    console.log('未使用加息券2:=====', pow2)
+                  }
+                  var target4 = (pow * investMoney - investMoney).toFixed(2)
+                  var target5 = (pow2 * investMoney - investMoney).toFixed(2)
+                  if (mouth < 12) {
+                   document.getElementById("savingsProfit").innerHTML = target4
+                  } else {
+                    document.getElementById("savingsProfit").innerHTML = target5
+                  }
+                  console.log('3444', investMoney)
+                  console.log('特权加息', vipPlusRate)
+                  console.log('加息券', interestVolumes)
+                  console.log('基础利率', investaprs)
+                  console.log('活动加息', addaprs)
+                  console.log('总利率', ((investaprs / 100 + vipPlusRate / 100 + addaprs / 100)))
+                  console.log('data', mouth)
+                  console.log('day', day)
+                  console.log('pow', pow)
+                  console.log('target4', target4)
+                  console.log('target5', target5)
+                  console.log('apr====', (1 + ((investaprs / 100 + vipPlusRate / 100 + interestVolumes / 100) / 365)))
+              } 
+              
+						}
+					}
+        }
       }
     },
     created () {
@@ -548,7 +727,23 @@
       this.borrowId = this.$route.query.id
     },
     components: {
-      navTitle
+      navTitle, swiper, swiperSlide
+    },
+    computed: {
+      swiper () {
+        if(this.investData.productId == 10){
+          
+          return this.$refs.mySwiper.swiper
+        }
+      }
+    },
+    updated () {
+      if(this.investData.productId == 10){
+          
+          this.$nextTick(() => {
+              // console.log('this is current swiper instance object', this.swiper)
+          })
+        }
     },
     mounted () {
       this.axios({
@@ -566,7 +761,22 @@
             this.$nextTick(() => {
               if(this.singUUID != " "){ // 劵列表接口
                 this.changAmount()
+              }else{
+                this.calcDelta1(0)
               }
+              // var lockPeriod = this.investData.lockPeriod;
+              // if (lockPeriod >= 30 && lockPeriod < 90) {
+              //   this.mouth = 1
+              // } else if (lockPeriod >= 90 && lockPeriod < 180) {
+              //   this.mouth = 3
+              // } else if (lockPeriod >= 180 && lockPeriod < 365) {
+              //   this.mouth = 6
+              // } else if (lockPeriod == 365) {
+              //   this.mouth = 12
+              // }
+              
+              document.getElementById('mouth').value = this.mouth 
+              document.getElementById('mouthText').innerHTML = this.mouth+'个月'
             })
         }).catch((error) => {
             console.log(error)
@@ -589,9 +799,6 @@
               console.log(error)
           })
         }
-        
-        // 计算利息
-        
     },
     methods: {
       showPicker (opt) {
@@ -681,16 +888,17 @@
       calcDelta1 (currentRate) {
         const _this = this
         console.log(currentRate)
-				if(_this.investData.productId == 10){
-					_this.calcDelta3(currentRate)
-				}
 				if(currentRate == undefined){
 					var currentRate = 0;
+        }
+        
+				if(_this.investData.productId == 10){
+					_this.calcDelta3(currentRate)
 				}
 				console.log("vipAprs",_this.volumes.vipApr)
 
 
-				if(_this.volumes.vipApr !== '' && _this.volumes.vipApr !== undefined){
+				if(_this.volumes.vipApr != undefined){
 					var investRate = Number(_this.investData.apr + _this.volumes.vipApr)
 				}else{
 					var investRate = Number(_this.investData.apr)
@@ -784,7 +992,7 @@
 				
 				var investaprs = Number(_this.investData.billBasicApr);//基础年化
 				var addaprs = Number(_this.investData.addapr);//基础年化
-				var mouth =Number(_this.mouth) ; //月份
+				var mouth =Number(document.getElementById('mouth').value) ; //月份
         var day = mouth*30
         console.log('特权加息',vipPlusRate)
 				if(interestVolumes > 0 ){
@@ -806,9 +1014,9 @@
 				var target4 = (pow*investMoney-investMoney).toFixed(2)
 				var target5 = (pow2*investMoney-investMoney).toFixed(2)
 				if(mouth < 12){
-					_this.savingsProfit=target4
+				 document.getElementById("savingsProfit").innerHTML = target4
 				}else{
-					_this.savingsProfit=target5
+				 document.getElementById("savingsProfit").innerHTML = target5
 				}
 				
 				console.log('3444',investMoney)
@@ -825,7 +1033,10 @@
 				console.log('apr====',(1 + ((investaprs/100 + vipPlusRate/100 + interestVolumes/100) /365)))
       },
       changAmount () { // 金额变化
-          this.axios({
+        if(this.singUUID == " "){
+          this.calcDelta1(0)
+        }else{
+           this.axios({
             method: 'post',
             data: {
                 bid: this.borrowId,
@@ -836,6 +1047,7 @@
           }).then((response) => {
               let interestVolumes = response.data.interestVolumes
               let returnCurrentVolumes = response.data.returnCurrentVolumes
+              console.log(interestVolumes,returnCurrentVolumes)
               this.interestPickData.pData1 = [{
                 text:'不使用',
                 value: " "
@@ -923,6 +1135,8 @@
           }).catch((error) => {
               console.log(error)
           }) 
+        }
+         
       },
       valid () {
         // var v1 = $.trim(investInput.val());
@@ -1066,6 +1280,19 @@
           }).catch((error) => {
               console.log(error)
           })
+      },
+      onTouchEnd (){
+        
+        
+        
+          var interestValue = this.interesValue
+          if(interestValue === '不使用'){
+            this.calcDelta3(0)
+          }else{
+            this.calcDelta3(interestValue)
+          }
+          console.log(this.swiper.activeIndex)
+        
       }
     }
   }
@@ -1092,7 +1319,7 @@
           height:1.4666666666666666rem;
           top:-1.6333333333333334rem;
           color:#fff;
-          background: url(../../../public/img/invest/extra_bg.png) no-repeat;
+          background: url(../../../static/img/invest/extra_bg.png) no-repeat;
           background-size: 100% 100%;
           left:-0.5rem;
         }
@@ -1101,7 +1328,7 @@
         display: inline-block;
         width:0.8666666666666667rem;
         height:0.8666666666666667rem;
-        background: url(../../../public/img/invest/notice_white_icon.png) no-repeat;
+        background: url(../../../static/img/invest/notice_white_icon.png) no-repeat;
         background-size: 100% 100%;
         margin:0 0 0 0.3rem;
         position:absolute;
@@ -1117,7 +1344,7 @@
           line-height:1.3rem;
           font-size: 0.6rem;
           text-align: left;
-          background: url(../../../public/img/invest/notice_white_bg.png) no-repeat;
+          background: url(../../../static/img/invest/notice_white_bg.png) no-repeat;
           background-size: 100% 100%;
           left:-0.75rem;
           padding:0 0 0 0.6rem ;
@@ -1172,6 +1399,70 @@
       }
     }
   }
+  & .schedule_content {
+    padding: 1rem;
+    margin-top: 1rem;
+    background: #fff;
+    & li{
+      float: left;
+      position: relative;
+      height:1.2rem;
+      margin-top:3rem;
+      & .pa{
+        height:3.5rem;
+        position: absolute;
+        top:-3.6rem;
+        left:0;
+        color:#8c96a7;
+        width:4rem;
+        text-align: left;
+        background: url(../../../static/img/invest/schedule_bg.png) no-repeat;
+        background-size: 1px 0.6666666666666666rem;
+        line-height: 1rem;
+      }
+      & .pa.active{
+        color:#1e93ff;
+      }
+    }
+    & li:nth-child(1){
+      width:49%;
+      background:#1e93ff;
+      border-radius: 5px 0 0 5px;
+      color:#fff;
+      font-size: 0.7333333333333333rem;
+      text-align:center;
+      line-height:1.2rem; 
+      & .pa{
+        left:0.2rem;
+        background-position:0.5rem bottom;
+      }
+    }
+    & li:nth-child(2){
+      width:0.1rem;
+      background: #fff;
+      font-size: 0.7333333333333333rem;
+      & .pa{
+        left:-2rem;
+        background-position:2rem bottom;
+        text-align: center;
+      }
+    }
+    & li:nth-child(3){
+      width:49%;
+      background:#dddddd;
+      border-radius: 0px 5px 5px 0px;
+      color:#fff;
+      font-size: 0.7333333333333333rem;
+      text-align:center;
+      line-height:1.2rem;
+      &  .pa{
+        text-align: right;
+        left:5rem;
+        background-position: 3.7rem bottom;
+      }
+    }
+    
+}
   & .privilegeList{
     background: #fff;
     font-size: 1rem;
@@ -1297,7 +1588,6 @@
     & .saving_profit{
        color: #8c96a7;
       line-height: 2rem;
-      margin-top: 0.5rem;
       font-size:0.5rem;
       text-align: left;
       & .red{
@@ -1346,6 +1636,35 @@
       margin-top: 1rem;
       background-color: #fff;
     }
+    & .cytime{
+      padding:1rem;
+      color:#8c96a7;
+      font-size: 0.8rem;
+      & .relate{
+        position: relative;
+        & .rule_b{position:absolute;width:1px; height:2rem;background: #fd5555 ;top:1rem;left:50%;margin-left:-1px;}
+        & .rule_b p{position:absolute;top:-1rem;left:-1rem;color:#fd5555;width:3rem;}
+      }
+    }
+    & .swiper-container{
+      height:4rem!important;
+      & .swiper-slide{
+        margin-top:2rem;
+        position: relative;
+        box-sizing: border-box;
+        & p{
+          position:absolute;
+          top:-1rem;
+          left:0.5rem;
+        }
+      }
+      
+      & img{
+        max-width: 100%;
+        border: 0;
+      }
+    }
+
   }
   & .ruleList{
     padding:1rem 0;

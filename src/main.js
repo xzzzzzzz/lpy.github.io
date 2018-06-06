@@ -9,7 +9,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import IView from 'iview';
 import 'iview/dist/styles/iview.css';
-import './public/css/css.css'
+import './static/css/css.css'
 import store from './store'
 import Tokens from './router/tokens' // 用户id
 
@@ -17,9 +17,13 @@ import Picker from './components/modules/picker' // 弹窗选择器
 
 import * as custom from './filters/commin' // 存放过滤器
 
+import VueAwesomeSwiper from 'vue-awesome-swiper' // swiper
+import 'swiper/dist/css/swiper.min.css';
+
 Vue.use(IView);
 Vue.use(Tokens);
 Vue.use(Picker);
+Vue.use(VueAwesomeSwiper);
 Vue.use(VueAxios,axios,Vuex);
 
 Vue.config.productionTip = false

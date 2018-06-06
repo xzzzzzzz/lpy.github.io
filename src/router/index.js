@@ -28,7 +28,7 @@ Vue.use(Router,VueAxios,axios)
 
 // 挂载路由
 const router =  new Router({
-   // mode: 'history',
+   mode: 'history',
    routes:[
         {
           path: '/',

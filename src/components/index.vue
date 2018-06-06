@@ -36,7 +36,7 @@
       </div>
       <div class="novice">
         <router-link :to='{name:"novice"}'>
-          <img src="../public/img/home/novice.png" alt="">
+          <img src="../static/img/home/novice.png" alt="">
         </router-link>
       </div>
       <div class="mengx">
@@ -66,7 +66,7 @@
       </div>
       <div class="invesList">
           <!-- 新手标 -->
-          <div class="xsb" v-if="noviceBid!=' '">
+          <div class="xsb">
             <div class="invest newinvest" :data-title="noviceBid.title" :data-id="noviceBid.id" @click="goInvest(noviceBid.id)">
               <div class="invest-top fix" @click.stop>
                   <div class="fl titnew">
@@ -101,7 +101,7 @@
             </div>
           </div>
           <!-- 商票 -->
-          <div class="sp" v-if="businessTenderList!=' '">
+          <div class="sp">
             <div class="invest" :data-title="businessTenderList.title" :data-id="businessTenderList.id" @click="goInvest(businessTenderList.id)">
               <div class="invest-top fix">
                   <div class="fl tits">
@@ -152,7 +152,7 @@
             </div>
           </div>
           <!-- 钱钱赚 -->
-          <div class="sp" v-if="qqTenderList != ' '">
+          <div class="sp">
             <div class="invest" :data-id="qqTenderList.id" @click="goInvest(qqTenderList.id)" >
               <div class="invest-top fix" @click.stop>
                   <div class="fl tits">
@@ -245,7 +245,7 @@ export default {
           method: 'post',
           data: { OPT: '410', signUUID: ''}
         }).then((response) => {
-          if(response.data.bids[5] != null){
+           if(response.data.bids[5] != null){
             this.noviceBid=response.data.bids[5]
           }else{
             this.noviceBid = " "
@@ -381,13 +381,13 @@ export default {
     width:90%;
     height:15rem;
     margin:1rem auto;
-    background: url(../public/img/home/money-boxbg.png) no-repeat center center;
+    background: url(../static/img/home/money-boxbg.png) no-repeat center center;
     background-size:100% 100%;
     .mengx-head{
       height: 4.3333333333rem;
       line-height: 3.333333333rem;
       padding-right: 1rem;
-      background: url(../public/img/home/money-boxtitle.png) no-repeat center center;
+      background: url(../static/img/home/money-boxtitle.png) no-repeat center center;
       background-size: 5.11rem 1.9rem;
       a{
         float: right;
@@ -401,7 +401,7 @@ export default {
         width: 11.33333333333rem;
         height: 2.266666666666rem;
         margin: 0.8333333333rem auto 0;
-        background: url(../public/img/home/toinvest.png) no-repeat;
+        background: url(../static/img/home/toinvest.png) no-repeat;
         background-size: 100% 100%;
       }
       ul{
@@ -413,15 +413,15 @@ export default {
           text-align: center;
           padding-top:4.833333333rem;
           &.drjx{
-                background: url(../public/img/home/drjx.png) no-repeat center 1rem;
+                background: url(../static/img/home/drjx.png) no-repeat center 1rem;
               background-size: 4.2rem 3.566666666rem;
           }
           &.lgl{
-                background: url(../public/img/home/lgl.png) no-repeat center 1rem;
+                background: url(../static/img/home/lgl.png) no-repeat center 1rem;
               background-size: 4.2rem 3.566666666rem;
           }
           &.bjx{
-                background: url(../public/img/home/bjx.png) no-repeat center 1rem;
+                background: url(../static/img/home/bjx.png) no-repeat center 1rem;
               background-size: 4.2rem 3.566666666rem;
           }
         }
@@ -434,24 +434,24 @@ export default {
     margin-bottom:1rem;
     text-align: left;
     &.newinvest{
-      background: #fff url(../public/img/home/newinvest.png) no-repeat right top;
+      background: #fff url(../static/img/home/newinvest.png) no-repeat right top;
       background-size: 3.33333333rem 3.33333333rem;
     }
     & .titnew{
       padding-left: 2.5rem;
-      background: url(../public/img/home/novic.png) no-repeat left center;
+      background: url(../static/img/home/novic.png) no-repeat left center;
       background-size: 2.2333333333333334rem 0.8666666666666667rem;
       font-size: 0.8666666666666667rem;
     }
     & .tits{
       padding-left: 1.3rem;
-      background: url(../public/img/home/img_shang.png) no-repeat left center;
+      background: url(../static/img/home/img_shang.png) no-repeat left center;
       background-size: 0.8666666666666667rem 0.8666666666666667rem;
       font-size: 0.8666666666666667rem;
     }
     & .tit{
       padding-left: 1.3rem;
-      background: url(../public/img/home/investitbg.png) no-repeat left center;
+      background: url(../static/img/home/investitbg.png) no-repeat left center;
       background-size: 0.8666666666666667rem 0.8666666666666667rem;
       font-size: 0.8666666666666667rem;
     }
@@ -507,12 +507,12 @@ export default {
         font-size: 0.8rem;
       }
       /* 气泡 */
-      & .bubble{display: inline-block;width:0.8666666666666667rem;height:0.8666666666666667rem;background: url(../public/img/home/notice_blue_icon.png) no-repeat;background-size: 100% 100%;margin:0 0 0 0.3rem;position:absolute;right:-0.6rem;top:0.9rem;}
-      & .bubble i{position: absolute;width:6.533333333333333rem;height:4.2rem;top:-4.2rem;color:#9ea2a5;line-height:1.3rem;font-size: 0.6rem;text-align: left;background: url(../public/img/home/notice_white_bg.png) no-repeat;background-size: 100% 100%;left:-0.75rem;padding:0 0 0 0.5rem ;box-sizing: border-box;}
+      & .bubble{display: inline-block;width:0.8666666666666667rem;height:0.8666666666666667rem;background: url(../static/img/home/notice_blue_icon.png) no-repeat;background-size: 100% 100%;margin:0 0 0 0.3rem;position:absolute;right:-0.6rem;top:0.9rem;}
+      & .bubble i{position: absolute;width:6.533333333333333rem;height:4.2rem;top:-4.2rem;color:#9ea2a5;line-height:1.3rem;font-size: 0.6rem;text-align: left;background: url(../static/img/home/notice_white_bg.png) no-repeat;background-size: 100% 100%;left:-0.75rem;padding:0 0 0 0.5rem ;box-sizing: border-box;}
 
       /* 额外加息气泡 */
       & .extra{position:relative;}
-      & .extra i{position: absolute;width:3.4rem;height:1.4666666666666666rem;top:-1.4333333333333334rem;color:#fff;font-size: 0.6rem;text-align: center;line-height: 1.2666666666666666rem;background: url(../public/img/home/extra_bg.png) no-repeat;background-size: 100% 100%;left:0rem;}
+      & .extra i{position: absolute;width:3.4rem;height:1.4666666666666666rem;top:-1.4333333333333334rem;color:#fff;font-size: 0.6rem;text-align: center;line-height: 1.2666666666666666rem;background: url(../static/img/home/extra_bg.png) no-repeat;background-size: 100% 100%;left:0rem;}
 
     }
     .invest-bottom {

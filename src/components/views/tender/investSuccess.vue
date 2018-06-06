@@ -50,7 +50,7 @@
 
 <style lang="less">
 .investSuccess{
-  background:url(../../../public/img/invest/chenggong.png) no-repeat center 8rem;
+  background:url(../../../static/img/invest/chenggong.png) no-repeat center 8rem;
   background-size:4rem 4rem;
   padding:13rem 1rem 0;
   & .title{
