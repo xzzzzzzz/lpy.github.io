@@ -364,55 +364,55 @@
 										<swiper class="swiper-container" :options="swiperOption" ref="mySwiper" @change="onTouchEnd">
                         <swiper-slide class="swiper-slide">
                           <p>0个月</p>
-                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                          <img src="../../../public/img/invest/ruler.png" alt="" class="sc-image">
                         </swiper-slide>
                         <swiper-slide class="swiper-slide">
                           <p>1个月</p>
-                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                          <img src="../../../public/img/invest/ruler.png" alt="" class="sc-image">
                         </swiper-slide>
                         <swiper-slide class="swiper-slide">
                           <p>2个月</p>
-                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                          <img src="../../../public/img/invest/ruler.png" alt="" class="sc-image">
                         </swiper-slide>
                         <swiper-slide class="swiper-slide">
                           <p>3个月</p>
-                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                          <img src="../../../public/img/invest/ruler.png" alt="" class="sc-image">
                         </swiper-slide>
                         <swiper-slide class="swiper-slide">
                           <p>4个月</p>
-                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                          <img src="../../../public/img/invest/ruler.png" alt="" class="sc-image">
                         </swiper-slide>
                         <swiper-slide class="swiper-slide">
                           <p>5个月</p>
-                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                          <img src="../../../public/img/invest/ruler.png" alt="" class="sc-image">
                         </swiper-slide>
                         <swiper-slide class="swiper-slide swiper-slide-prev">
                           <p>6个月</p>
-                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                          <img src="../../../public/img/invest/ruler.png" alt="" class="sc-image">
                         </swiper-slide>
                         <swiper-slide class="swiper-slide swiper-slide-active">
                           <p>7个月</p>
-                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                          <img src="../../../public/img/invest/ruler.png" alt="" class="sc-image">
                         </swiper-slide>
                         <swiper-slide class="swiper-slide swiper-slide-next">
                           <p>8个月</p>
-                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                          <img src="../../../public/img/invest/ruler.png" alt="" class="sc-image">
                         </swiper-slide>
                         <swiper-slide class="swiper-slide">
                           <p>9个月</p>
-                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                          <img src="../../../public/img/invest/ruler.png" alt="" class="sc-image">
                         </swiper-slide>
                         <swiper-slide class="swiper-slide">
                           <p>10个月</p>
-                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                          <img src="../../../public/img/invest/ruler.png" alt="" class="sc-image">
                         </swiper-slide>
                         <swiper-slide class="swiper-slide">
                           <p>11个月</p>
-                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                          <img src="../../../public/img/invest/ruler.png" alt="" class="sc-image">
                         </swiper-slide>
                         <swiper-slide class="swiper-slide">
                           <p>12个月</p>
-                          <img src="../../../static/img/invest/ruler.png" alt="" class="sc-image">
+                          <img src="../../../public/img/invest/ruler.png" alt="" class="sc-image">
                         </swiper-slide>
                   </swiper>
                   <div class="rule_b">
@@ -1319,7 +1319,7 @@
           height:1.4666666666666666rem;
           top:-1.6333333333333334rem;
           color:#fff;
-          background: url(../../../static/img/invest/extra_bg.png) no-repeat;
+          background: url(../../../public/img/invest/extra_bg.png) no-repeat;
           background-size: 100% 100%;
           left:-0.5rem;
         }
@@ -1328,7 +1328,7 @@
         display: inline-block;
         width:0.8666666666666667rem;
         height:0.8666666666666667rem;
-        background: url(../../../static/img/invest/notice_white_icon.png) no-repeat;
+        background: url(../../../public/img/invest/notice_white_icon.png) no-repeat;
         background-size: 100% 100%;
         margin:0 0 0 0.3rem;
         position:absolute;
@@ -1344,7 +1344,7 @@
           line-height:1.3rem;
           font-size: 0.6rem;
           text-align: left;
-          background: url(../../../static/img/invest/notice_white_bg.png) no-repeat;
+          background: url(../../../public/img/invest/notice_white_bg.png) no-repeat;
           background-size: 100% 100%;
           left:-0.75rem;
           padding:0 0 0 0.6rem ;
@@ -1416,7 +1416,7 @@
         color:#8c96a7;
         width:4rem;
         text-align: left;
-        background: url(../../../static/img/invest/schedule_bg.png) no-repeat;
+        background: url(../../../public/img/invest/schedule_bg.png) no-repeat;
         background-size: 1px 0.6666666666666666rem;
         line-height: 1rem;
       }
