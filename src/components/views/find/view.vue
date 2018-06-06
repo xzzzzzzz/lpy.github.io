@@ -64,6 +64,10 @@ export default{
       display: block;
       margin:1rem auto;
     }
+    & table{
+      width:100%;
+      overflow: hidden;
+    }
   }
 }
 </style>
