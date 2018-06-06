@@ -18,11 +18,9 @@
           <li class="l-m">
             <Carousel autoplay :dots="setting.dots" :arrow="setting.arrow" :autoplay-speed='setting.autoplaySpeed' class="newItem">
                 <Carousel-item  v-for="(item,index) in newItems" :key="index" >
-                  <a :href="newUrl+(item.id)">
-                    <div class="demo-carousel">
+                  <div class="demo-carousel" @click="clickNew(item.id)">
                       {{item.title}}
                     </div>
-                  </a>
                 </Carousel-item>
             </Carousel>
           </li>
@@ -192,7 +190,7 @@
       <div class="underwriting">
         <ul class="fix">
           <li>
-            <a href="#find/view~id=128">
+            <a href="javascript:;" @click="clickNew('128')">
               <div>
                 <Icon type="ios-information-outline"></Icon>关于我们
               </div>
@@ -294,6 +292,12 @@ export default {
       bubbles () {
         this.bubble = !this.bubble
         console.log(this.bubble)
+      },
+      clickNew (id) {
+        this.$router.push({
+          path:'/find/view',
+          query:{id:id}
+        })
       }
     }
 }

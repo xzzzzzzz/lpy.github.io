@@ -775,7 +775,7 @@
               //   this.mouth = 12
               // }
               if(this.investData.productId == 10){
-                 document.getElementById('mouth').value = this.mouth 
+                document.getElementById('mouth').value = this.mouth 
                 document.getElementById('mouthText').innerHTML = this.mouth+'个月'
               }
              
