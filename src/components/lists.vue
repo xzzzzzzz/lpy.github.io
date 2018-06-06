@@ -229,7 +229,7 @@ export default {
     created () {
         this.$store.state.showBottomNav = true
         this.signUUID = this.getDatas()
-        let height = window.screen.height 
+        let height = window.screen.height-120
         this.height = height
     },
     mounted () {

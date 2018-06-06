@@ -9,6 +9,7 @@ import Novice from '../components/views/activity/novice' // 新手专区
 import Invest from '../components/views/tender/invest' // 投资详情
 import InvestSuccess from '../components/views/tender/investSuccess' // 投资成功
 import News from '../components/views/find/news' // 新闻公告
+import NewsView from '../components/views/find/view' // 新闻公告内容
 import TelephoneFare from '../components/views/integral/telephoneFare' //话费充值详情页
 import CommodityPage from '../components/views/integral/commodityPage' //商城产品详情
 
@@ -72,6 +73,11 @@ const router =  new Router({
           path: '/find/news',
           name: 'news',
           component: News
+        },
+        {
+          path: '/find/view',
+          name: 'newsView',
+          component: NewsView
         },
         {
           path: '/tender/investSuccess',

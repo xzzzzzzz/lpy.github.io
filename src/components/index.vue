@@ -4,7 +4,9 @@
       <Carousel autoplay >
           <Carousel-item  v-for="item in item" :key="item.image_filename" >
               <div class="demo-carousel">
-                <img :src="url +(item.image_filename)">
+                <a :href="item.outUrl">
+                  <img :src="url +(item.image_filename)">
+                </a>
               </div>
           </Carousel-item>
       </Carousel>
@@ -220,7 +222,7 @@ export default {
     data () {
       return {
         url:global_.serverPath,
-        newUrl:'https://m.xgqq.com/#find/view~id=',
+        newUrl:'/find/view?id=',
         detailShow:false,
         setting: {
             autoplaySpeed: 3000,

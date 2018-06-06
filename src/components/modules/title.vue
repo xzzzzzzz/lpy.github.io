@@ -41,11 +41,15 @@
     left: 0;  
     height:3rem;
     line-height:3rem;
-    font-size: 1.3rem;
+    font-size: 1rem;
     width:100%;
 		background: linear-gradient(to right, #24e9f0 , #2564ef); /* 标准的语法 */
 		color:#fff;
 		z-index: 9;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		
 		& a{
 			position: absolute;
 			width:3rem;

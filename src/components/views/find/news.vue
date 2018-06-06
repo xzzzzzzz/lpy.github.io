@@ -4,19 +4,23 @@
 		<div class="main-wrap">
 			<template>
 			    <Tabs type="card" v-model="name" value="name1" @on-click="clickTab">
-			        <TabPane label="公告" name="7">
+			        <TabPane label="公告" name="9">
 			        	<Scroll :on-reach-bottom="handleReachBottom" :height="height">
 			        		<Card dis-hover v-for="(item, index) in noticeList" :key="index">
-								<h2>{{item.title}}</h2>
-								<DatePicker type="date" format="yyyy-MM-dd">{{item.start_show_time.time}}</DatePicker>
+								<div @click="clickNew(item.id)">
+									<h2>{{item.title}}</h2>
+									<DatePicker type="date" format="yyyy-MM-dd">{{item.start_show_time.time|formatDate}}</DatePicker>
+								</div>
 							</Card>
 						</Scroll>
 			        </TabPane>
-			        <TabPane label="新闻" name="9">
+			        <TabPane label="新闻" name="7">
 			        	<Scroll :on-reach-bottom="handleReachBottom" :height="height">
-			        		<Card dis-hover v-for="(item, index) in noticeList" :key="index">
-								<h2>{{item.title}}</h2>
-								<DatePicker type="date" format="yyyy-MM-dd">{{item.start_show_time.time}}</DatePicker>
+			        		<Card dis-hover v-for="(item, index) in noticeList" :key="index" @click="clickNew(item.id)">
+								<div @click="clickNew(item.id)">
+									<h2>{{item.title}}</h2>
+									<DatePicker type="date" format="yyyy-MM-dd">{{item.start_show_time.time|formatDate}}</DatePicker>
+								</div>
 							</Card>
 						</Scroll>
 			        </TabPane>
@@ -59,7 +63,7 @@ export default{
 			method: 'post',
 			data: {
 				OPT: '131',
-				typeId: 7,
+				typeId: 9,
 				currPage: 1,
 				pageSize: 10 ,
 			}
@@ -146,7 +150,13 @@ export default{
            		} 
                    
             });
-        },
+		},
+		clickNew (id) {
+			this.$router.push({
+				path:'/find/view',
+				query:{id:id}
+			})
+		}
         
 	},
 }
