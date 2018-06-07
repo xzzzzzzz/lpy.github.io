@@ -260,6 +260,23 @@ export default {
             var data = response.data
             if(data.error == -1){
                 this.userData = data
+                 this.axios({
+                    method: 'post',
+                    data: { 
+                        signUUID: getDatas,
+                        OPT: 10030
+                    }
+                    }).then((response) => {
+                        var data = response.data
+                        if(data.error == -1){
+                            this.accumulated = data.data.data
+                        }else{
+                        this.$Message.warning(data.msg)
+                        }
+                        console.log(this.accumulated)
+                    }).catch((error) => {
+                        console.log(error)
+                    })
             }else{
                this.$Message.warning(data.msg)
             }
@@ -267,23 +284,7 @@ export default {
             console.log(error)
         })
         // 月度累投
-        this.axios({
-          method: 'post',
-          data: { 
-            signUUID: getDatas,
-            OPT: 10030
-          }
-        }).then((response) => {
-            var data = response.data
-            if(data.error == -1){
-                this.accumulated = data.data.data
-            }else{
-               this.$Message.warning(data.msg)
-            }
-            console.log(this.accumulated)
-        }).catch((error) => {
-            console.log(error)
-        })
+       
     },
     methods: {
         trantion () {
