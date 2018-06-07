@@ -34,8 +34,12 @@
                         <div class="tired fl">
                             <span>
                                 <a href="#vip/accumulated" v-if="accumulated != null">
-                                    月度累投<br>
+                                    月度有奖冲档<br>还差
                                     {{accumulated.marginAmount|numberFormats}}元
+                                </a>
+                                <a href="#vip/accumulated" v-else>
+                                    月度累投<br>
+                                    {{0|numberFormats}}元
                                 </a>
                             </span>
                         </div>
@@ -108,7 +112,7 @@
         </div>
         <div class="user-mid">
             <ul class="fix">
-                <li id="accumulatedIncome" data-profit="267.63" data-coupon="0.00" data-returnvolume="2777.00" data-experiencegoldby="0.33" data-sumgotsubsidy="0.00" data-allmoney="3044.96">
+                <li>
                     <a href="javascript:;">
                         <p class="stats">累计收益(元)</p>
                         <p class="value">
@@ -116,11 +120,11 @@
                         </p>
                     </a>
                 </li>
-                <li id="experienceGold" data-currentrate="8.00" data-holdamount="0.00" data-sumbuy="500.00" data-sumincome="0.33" data-yesterdayincome="0.00">
+                <li>
                     <a href="javascript:;">
                         <p class="stats">体验金(元)</p>
                         <p class="value">
-                           {{userData.experienceAccount.holdAmount|numberFormats}}
+                           {{holdAmount|numberFormats}}
                         </p>
                     </a>
                 </li>
@@ -236,12 +240,12 @@ export default {
         down:true,
         eye:true,
         userData:{},
-        accumulated:{}
+        accumulated:{},
+        holdAmount:0,
       }
     },
     created () {
         this.$store.state.showBottomNav = true
-
     },
     components: { navTitle },
     mounted: function() {
@@ -260,6 +264,7 @@ export default {
             var data = response.data
             if(data.error == -1){
                 this.userData = data
+               this.holdAmount = this.userData.experienceAccount.holdAmount
                  this.axios({
                     method: 'post',
                     data: { 
@@ -495,6 +500,12 @@ export default {
                 top:0;
                 box-sizing:border-box;
                 padding:0.1rem 0 0 1.4rem;
+                & a{
+                    display: block;
+                    width:100%;
+                    height:100%;
+                    font-size: 0.5rem;
+                }
             }
         }
 
