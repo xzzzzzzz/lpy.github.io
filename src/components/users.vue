@@ -34,8 +34,7 @@
                         <div class="tired fl">
                             <span>
                                 <a href="#vip/accumulated" v-if="accumulated != null">
-                                    月度有奖冲档<br>还差
-                                    {{accumulated.marginAmount|numberFormats}}元
+                                    月度有奖冲档<br>还差{{accumulated.marginAmount|numberFormats}}元
                                 </a>
                                 <a href="#vip/accumulated" v-else>
                                     月度累投<br>
