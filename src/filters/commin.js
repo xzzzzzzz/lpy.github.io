@@ -38,4 +38,18 @@ let formatDate = (value) => {
   var date = new Date(value);
   return new Date(value).Format('yyyy-MM-dd')
 }
-export { numberFormats, formatDate}
+
+let realNameFormat = (realName) => { 
+
+  return realName.replace(/^(.+)(.{1})$/, function (s, s1, s2) {
+    var l = s1.length;
+    var rs = "";
+    for (var i = 0; i < l; i++) {
+      rs += "*";
+    }
+    rs += s2;
+    return rs;
+  });
+		 
+}
+export { numberFormats, formatDate, realNameFormat}

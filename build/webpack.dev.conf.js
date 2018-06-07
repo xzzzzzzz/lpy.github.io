@@ -47,7 +47,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env'),
-      BASE_URL:"'https://api0531.xgqq.com/app/services'"   //开发地址
+      BASE_URL:"'http://test.qianqiandog.com/app/services'"   //开发地址
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.

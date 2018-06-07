@@ -754,32 +754,36 @@
               OPT: 11
             }
         }).then((response) => {
-            this.investData = response.data
-            if(this.investData.loanSchedule < 100){
-              this.amount = this.investData.minInvestAmount
-            }
-            this.$nextTick(() => {
-              if(this.singUUID != " "){ // 劵列表接口
-                this.changAmount()
-              }else{
-                this.calcDelta1(0)
+           if(response.data.error == -1){
+              this.investData = response.data
+              if(this.investData.loanSchedule < 100){
+                this.amount = this.investData.minInvestAmount
               }
-              // var lockPeriod = this.investData.lockPeriod;
-              // if (lockPeriod >= 30 && lockPeriod < 90) {
-              //   this.mouth = 1
-              // } else if (lockPeriod >= 90 && lockPeriod < 180) {
-              //   this.mouth = 3
-              // } else if (lockPeriod >= 180 && lockPeriod < 365) {
-              //   this.mouth = 6
-              // } else if (lockPeriod == 365) {
-              //   this.mouth = 12
-              // }
-              if(this.investData.productId == 10){
-                document.getElementById('mouth').value = this.mouth 
-                document.getElementById('mouthText').innerHTML = this.mouth+'个月'
-              }
-             
-            })
+              this.$nextTick(() => {
+                if(this.singUUID != " "){ // 劵列表接口
+                  this.changAmount()
+                }else{
+                  this.calcDelta1(0)
+                }
+                // var lockPeriod = this.investData.lockPeriod;
+                // if (lockPeriod >= 30 && lockPeriod < 90) {
+                //   this.mouth = 1
+                // } else if (lockPeriod >= 90 && lockPeriod < 180) {
+                //   this.mouth = 3
+                // } else if (lockPeriod >= 180 && lockPeriod < 365) {
+                //   this.mouth = 6
+                // } else if (lockPeriod == 365) {
+                //   this.mouth = 12
+                // }
+                if(this.investData.productId == 10){
+                  document.getElementById('mouth').value = this.mouth 
+                  document.getElementById('mouthText').innerHTML = this.mouth+'个月'
+                }
+              
+              })
+           }else{
+             this.$Message.warning(response.data.msg)
+           }
         }).catch((error) => {
             console.log(error)
         })
@@ -792,11 +796,15 @@
                 OPT: 207
               }
           }).then((response) => {
-              this.userData = response.data
+            if(response.data.error == -1){
+             this.userData = response.data
               
               this.$nextTick(() => {
                 
               })
+           }else{
+             this.$Message.warning(response.data.msg)
+           }
           }).catch((error) => {
               console.log(error)
           })
@@ -1047,93 +1055,97 @@
                 OPT: 152
               }
           }).then((response) => {
-              let interestVolumes = response.data.interestVolumes
-              let returnCurrentVolumes = response.data.returnCurrentVolumes
-              console.log(interestVolumes,returnCurrentVolumes)
-              this.interestPickData.pData1 = [{
-                text:'不使用',
-                value: " "
-              }]
-              this.backPickData.pData1 = [{
-                text:'不使用',
-                value: " "
-              }]
-              for(let i=0;i<interestVolumes.length;i++){
-                let interesArr = {}
-                let interesText = interestVolumes[i].value
-                let interesValue = interestVolumes[i].id
-                interesArr = {
-                  'text':interesText,
-                  'value':interesValue
-                }
-                this.interestPickData.pData1.push(interesArr)
-                this.interestLength = interestVolumes.length
-              }
-              for(let i=0;i<returnCurrentVolumes.length;i++){
-                let backArr = {}
-                let backText = returnCurrentVolumes[i].value
-                let backValue = returnCurrentVolumes[i].id
-                backArr = {
-                  'text':backText,
-                  'value':backValue
-                }
-                this.backPickData.pData1.push(backArr)
-                this.backLength = returnCurrentVolumes.length
-              }
-              this.volumes = response.data
-              if(this.volumes.couponMutex == false){
-                  if(this.volumes.interestVolumes != ''){
-                    this.interestValue = this.volumes.interestVolumes['0'].value
-                    this.interestId = this.volumes.interestVolumes['0'].id
-                    this.backValue = "不使用"
-                    this.backId = " "
-                    this.calcDelta1(this.interestValue)
-                  }else if(this.volumes.returnCurrentVolumes != ""){
-                    this.interestValue = "不使用"
-                    this.interestId = " "
-                    this.backValue = this.volumes.returnCurrentVolumes['0'].value
-                    this.backId = this.volumes.returnCurrentVolumes['0'].id
-                    this.calcDelta1(0)
-                  }else{
-                    this.interestValue = "不使用"
-                    this.backValue = "不使用"
-                    this.interestId = " "
-                    this.backId = " "
-                    this.calcDelta1(0)
+              if(response.data.error == -1){
+                let interestVolumes = response.data.interestVolumes
+                let returnCurrentVolumes = response.data.returnCurrentVolumes
+                console.log(interestVolumes,returnCurrentVolumes)
+                this.interestPickData.pData1 = [{
+                  text:'不使用',
+                  value: " "
+                }]
+                this.backPickData.pData1 = [{
+                  text:'不使用',
+                  value: " "
+                }]
+                for(let i=0;i<interestVolumes.length;i++){
+                  let interesArr = {}
+                  let interesText = interestVolumes[i].value
+                  let interesValue = interestVolumes[i].id
+                  interesArr = {
+                    'text':interesText,
+                    'value':interesValue
                   }
-                }else{
-                  if(this.volumes.status == 0){
-                    this.interestValue = "不使用"
-                    this.backValue = "不使用"
-                    this.interestId = " "
-                    this.backId = " "
-                    this.calcDelta1(0)
-                  }else if(this.volumes.status == 1){
-                    this.interestValue = this.volumes.interestVolumes['0'].value
-                    this.interestId = this.volumes.interestVolumes['0'].id
-                    this.backValue = "不使用"
-                    this.backId = " "
-                    this.calcDelta1(this.interestValue)
-                  }else if(this.volumes.status == 2){
-                    this.interestValue = "不使用"
-                    this.backValue = "不使用"
-                    this.interestId = " "
-                    this.backId = ""
-                    this.calcDelta1(0)
-                  }else if(this.volumes.status == 3){
-                    this.interestValue = "不使用"
-                    this.backValue = this.volumes.returnCurrentVolumes['0'].value
-                    this.interestId = " "
-                    this.backId = this.volumes.returnCurrentVolumes['0'].id
-                    this.calcDelta1(0)
-                  }else{
-                    this.interestValue = "不使用"
-                    this.backValue = "不使用"
-                    this.interestId = " "
-                    this.backId = " "
-                    this.calcDelta1(0)
-                  }
+                  this.interestPickData.pData1.push(interesArr)
+                  this.interestLength = interestVolumes.length
                 }
+                for(let i=0;i<returnCurrentVolumes.length;i++){
+                  let backArr = {}
+                  let backText = returnCurrentVolumes[i].value
+                  let backValue = returnCurrentVolumes[i].id
+                  backArr = {
+                    'text':backText,
+                    'value':backValue
+                  }
+                  this.backPickData.pData1.push(backArr)
+                  this.backLength = returnCurrentVolumes.length
+                }
+                this.volumes = response.data
+                if(this.volumes.couponMutex == false){
+                    if(this.volumes.interestVolumes != ''){
+                      this.interestValue = this.volumes.interestVolumes['0'].value
+                      this.interestId = this.volumes.interestVolumes['0'].id
+                      this.backValue = "不使用"
+                      this.backId = " "
+                      this.calcDelta1(this.interestValue)
+                    }else if(this.volumes.returnCurrentVolumes != ""){
+                      this.interestValue = "不使用"
+                      this.interestId = " "
+                      this.backValue = this.volumes.returnCurrentVolumes['0'].value
+                      this.backId = this.volumes.returnCurrentVolumes['0'].id
+                      this.calcDelta1(0)
+                    }else{
+                      this.interestValue = "不使用"
+                      this.backValue = "不使用"
+                      this.interestId = " "
+                      this.backId = " "
+                      this.calcDelta1(0)
+                    }
+                  }else{
+                    if(this.volumes.status == 0){
+                      this.interestValue = "不使用"
+                      this.backValue = "不使用"
+                      this.interestId = " "
+                      this.backId = " "
+                      this.calcDelta1(0)
+                    }else if(this.volumes.status == 1){
+                      this.interestValue = this.volumes.interestVolumes['0'].value
+                      this.interestId = this.volumes.interestVolumes['0'].id
+                      this.backValue = "不使用"
+                      this.backId = " "
+                      this.calcDelta1(this.interestValue)
+                    }else if(this.volumes.status == 2){
+                      this.interestValue = "不使用"
+                      this.backValue = "不使用"
+                      this.interestId = " "
+                      this.backId = ""
+                      this.calcDelta1(0)
+                    }else if(this.volumes.status == 3){
+                      this.interestValue = "不使用"
+                      this.backValue = this.volumes.returnCurrentVolumes['0'].value
+                      this.interestId = " "
+                      this.backId = this.volumes.returnCurrentVolumes['0'].id
+                      this.calcDelta1(0)
+                    }else{
+                      this.interestValue = "不使用"
+                      this.backValue = "不使用"
+                      this.interestId = " "
+                      this.backId = " "
+                      this.calcDelta1(0)
+                    }
+                  }
+              }else{
+                this.$Message.warning(response.data.msg)
+              }
           }).catch((error) => {
               console.log(error)
           }) 

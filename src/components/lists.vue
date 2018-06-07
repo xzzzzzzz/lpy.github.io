@@ -244,11 +244,15 @@ export default {
             signUUID: this.signUUID || ""
             }
         }).then((response) => {
-            this.bidsAllCount=response.data.bidsAllCount
-            this.investList=response.data.bidsAllList
-            for (let i = 0; i<this.investList.length; i++) {
-                let tex = this.investList[i].tags.split(',')
-                this.investList[i].tag = tex
+            if(response.data.error == -1){
+                this.bidsAllCount=response.data.bidsAllCount
+                this.investList=response.data.bidsAllList
+                for (let i = 0; i<this.investList.length; i++) {
+                    let tex = this.investList[i].tags.split(',')
+                    this.investList[i].tag = tex
+                }
+            }else{
+                this.$Message.warning(response.data.msg)
             }
         }).catch((error) => {
             console.log(error)
@@ -282,11 +286,15 @@ export default {
                 signUUID: this.signUUID || ""
                 }
             }).then((response) => {
-                this.investList=response.data.bidsAllList
-                this.bidsAllCount = response.data.bidsAllCount
-                for (let i = 0; i<this.investList.length; i++) {
-                    let tex = this.investList[i].tags.split(',')
-                    this.investList[i].tag = tex
+                if(response.data.error == -1){
+                    this.investList=response.data.bidsAllList
+                    this.bidsAllCount = response.data.bidsAllCount
+                    for (let i = 0; i<this.investList.length; i++) {
+                        let tex = this.investList[i].tags.split(',')
+                        this.investList[i].tag = tex
+                    }
+                }else{
+                    this.$Message.warning(response.data.msg)
                 }
             }).catch((error) => {
                 console.log(error)
@@ -318,7 +326,7 @@ export default {
                 if(this.currPage >= length){
                     this.currPage = length
                     setTimeout(() => {
-                        console.log('没有更多了')
+                        this.$Message.warning('没有更多了')
                     },2000)
                     
                 }else{
@@ -336,14 +344,18 @@ export default {
                             signUUID: that.signUUID || ""
                             }
                         }).then((response) => {
-                            let dataList = response.data.bidsAllList
-                            for (var i = 0;i < dataList.length; i++){
-                                that.investList.push(dataList[i])
-                            }
-                            
-                            for (let s = 0; s<this.investList.length; s++) {
-                                let tex = this.investList[s].tags.split(',')
-                                this.investList[s].tag = tex
+                            if(response.data.error == -1){
+                                let dataList = response.data.bidsAllList
+                                for (var i = 0;i < dataList.length; i++){
+                                    that.investList.push(dataList[i])
+                                }
+                                
+                                for (let s = 0; s<this.investList.length; s++) {
+                                    let tex = this.investList[s].tags.split(',')
+                                    this.investList[s].tag = tex
+                                }
+                            }else{
+                                this.$Message.warning(response.data.msg)
                             }
                         }).catch((error) => {
                             console.log(error)
@@ -391,6 +403,13 @@ export default {
         top:3rem;
         left:0;
         width:100%;
+        & .ivu-tabs-nav{
+            width:100%;
+        }
+        & .ivu-tabs-tab {
+            width:50%;
+            box-sizing: border-box;
+        }
         & .ivu-menu-horizontal{
             height:100%;
             line-height: 2rem;
