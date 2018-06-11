@@ -191,12 +191,14 @@
                 <text-scorll :dataList="newList" scrollType="scroll-left-linear"> </text-scorll>
             </div>
         </div>
+         <quick-menu :menu-count=count :list-text=icons :menu-url-list=list :bottom=bottom :background-color=backgroundColor :color=color :position=position :is-open-new-tab=isOpenNewTab @process="dataGet"></quick-menu>
     </div>
 </template>
 
 <script>
 import navTitle from '../components/modules/title.vue'
 import textScorll from '../components/modules/textScorll.vue'
+import quickMenu from '../components/modules/quickMenu'
 export default {
     data () {
       return {
@@ -223,7 +225,15 @@ export default {
         signUUID:'', // 用户名
         currPage:1, // 分页
         height:"",
-        ulWidth:""
+        ulWidth:"",
+        count:5,
+        icons:["短期限","长期限","满标率","最大可投","高利率"],
+        list:[{"status":'5'},{"status":'4'},{"status":'3'},{"status":'2'},{"status":'1'}],
+        backgroundColor:'#17c4c5',
+        color:'#ffffff',
+        position:'bottom-right',
+        isOpenNewTab:false,
+        bottom:'180px'
       }
     },
     created () {
@@ -367,6 +377,28 @@ export default {
         },
         goInvest (item) {
             this.$router.push({path:'/tender/invest',query:{id:item}})
+        },
+        dataGet (value) {
+            this.axios({
+                method: 'post',
+                data: {
+                    OPT: '408',
+                    pageSize: 10,
+                    currPage: 1,
+                    orderFlag: value,
+                    productId: this.productId,
+                    signUUID: this.signUUID || ""
+                    }
+                }).then((response) => {
+                    this.bidsAllCount=response.data.bidsAllCount
+                    this.investList=response.data.bidsAllList
+                    for (let i = 0; i<this.investList.length; i++) {
+                        let tex = this.investList[i].tags.split(',')
+                        this.investList[i].tag = tex
+                    }
+                }).catch((error) => {
+                    console.log(error)
+                }) 
         }
 
     }

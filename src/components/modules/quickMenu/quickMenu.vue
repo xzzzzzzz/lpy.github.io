@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="wrap" ref="wrap"></div>
+    <div class="wrap" ref="wrap" @click="cloceWrap"></div>
     <div class="quick-menu" ref="quickMenu" :style="quickMenuStyle">
       <div v-for="(n,key) in menuCount" class="sub-menu" :key="key" :style="getSubMenu(n-1)">
         <p :style="subMenuStyle" @mouseover.stop="mouseEnterSubMenu" @mouseout.stop="mouseOutSubMenu" @click="processCallback(menuUrlList[n-1].status)">
@@ -128,10 +128,12 @@ name:'quickMenu',
       this.$emit('process',key)
       let menuEl = this.$refs.quickMenu
       let menuIconEl = this.$refs.icon
+      let wrap = this.$refs.wrap
       menuEl.className = menuEl.className.replace(' active','')
       menuIconEl.forEach( function(element, index) {
       element.className = element.className.replace(' menu-animate','')
       });
+      wrap.className= wrap.className.replace(' active','')
     },
     mouseEnterSubMenu(e){
       if(e.target.tagName==='A'){
@@ -170,9 +172,19 @@ name:'quickMenu',
       if (g > 255) g = 255
       else if (g < 0) g = 0
       return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16)
+    },
+    cloceWrap () {
+        let menuEl = this.$refs.quickMenu
+        let menuIconEl = this.$refs.icon
+        let wrap = this.$refs.wrap
+        menuEl.className = menuEl.className.replace(' active','')
+        menuIconEl.forEach( function(element, index) {
+        element.className = element.className.replace(' menu-animate','')
+        });
+        wrap.className= wrap.className.replace(' active','')
     }
   }
-	}
+}
 </script>
 <style lang="less">
 .menu-animate {
@@ -190,9 +202,12 @@ name:'quickMenu',
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  opacity: 0;
   display: none;
+  z-index: 22;
 }
 .wrap.active{
+  opacity: 1;
   display: block;
 }
 .quick-menu {
@@ -204,6 +219,7 @@ name:'quickMenu',
   -moz-transition: all 1s ease;
   transition: all 1s ease;
   right: 30px;
+  z-index: 23;
   > .menu {
     display: block;
     position: absolute;
@@ -304,7 +320,7 @@ name:'quickMenu',
       i {
         outline: none;
         font-style: normal;
-      font-size: 0.8rem;
+      font-size: 0.3rem;
         background:transparent;
         &:before{
           vertical-align: middle;
